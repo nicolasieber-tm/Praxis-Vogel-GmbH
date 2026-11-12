@@ -1,0 +1,104 @@
+title: Kontakt | Praxis Vogel GmbH, Kastelweg 6, Bettlach
+description: Kontakt zur Praxis Vogel GmbH in Bettlach: Telefon 078 731 76 78, E-Mail praxis-vogel@gmx.ch oder Kontaktformular. Wir melden uns so schnell wie möglich.
+nav: kontakt
+crumb: Kontakt
+priority: 0.9
+
+    <section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Brotkrümelnavigation"><ol><li><a href="/">Startseite</a></li><li aria-current="page">Kontakt</li></ol></nav>
+        <p class="eyebrow">Kontakt</p>
+        <h1>Gerne hören wir Ihnen zu.</h1>
+        <p class="lead">Wenn Sie Fragen haben oder weitere Informationen zu unseren Angeboten benötigen, kontaktieren Sie uns gerne. Wir melden uns so schnell wie möglich.</p>
+      </div>
+    </section>
+
+    <section class="section section--surface">
+      <div class="container contact-grid">
+        <div class="card">
+          <h2 style="font-size:var(--fs-h3)">Anfrage senden</h2>
+          <!--
+            Formular-Versand: Trage bei data-endpoint die URL eines Formular-Dienstes ein
+            (z. B. https://formspree.io/f/XXXX oder ein eigenes PHP-Skript).
+            Ohne Endpoint öffnet sich das E-Mail-Programm mit vorausgefüllter Nachricht.
+          -->
+          <form class="form" data-contact-form data-endpoint="" data-mailto="praxis-vogel@gmx.ch" novalidate>
+            <div class="form__row">
+              <div class="field">
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" autocomplete="name" autocapitalize="words" enterkeyhint="next" required>
+              </div>
+              <div class="field">
+                <label for="telefon">Telefon <span class="optional">(optional)</span></label>
+                <input id="telefon" name="telefon" type="tel" inputmode="tel" autocomplete="tel" enterkeyhint="next">
+              </div>
+            </div>
+            <div class="field">
+              <label for="email">E-Mail-Adresse</label>
+              <input id="email" name="email" type="email" inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false" enterkeyhint="next" required>
+            </div>
+            <div class="form__row">
+              <div class="field">
+                <label for="rolle">Ich bin</label>
+                <select id="rolle" name="rolle">
+                  <option>Elternteil / Angehörige:r</option>
+                  <option>Jugendliche:r</option>
+                  <option>Behörde / Fachstelle</option>
+                  <option>Andere</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="anliegen">Interesse an</label>
+                <select id="anliegen" name="anliegen">
+                  <option>Familienbegleitung</option>
+                  <option>Coaching für Jugendliche</option>
+                  <option>Ich bin noch unsicher</option>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label for="nachricht">Ihre Nachricht</label>
+              <textarea id="nachricht" name="nachricht" rows="5" required placeholder="Beschreiben Sie kurz Ihre Situation oder Ihre Frage."></textarea>
+            </div>
+            <div class="visually-hidden" aria-hidden="true">
+              <label for="website">Website</label>
+              <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+            </div>
+            <div class="field--check">
+              <input id="datenschutz" name="datenschutz" type="checkbox" required>
+              <label for="datenschutz">Ich habe die <a href="/datenschutz/">Datenschutzerklärung</a> gelesen und bin mit der Bearbeitung meiner Angaben einverstanden.</label>
+            </div>
+            <div>
+              <button type="submit" class="btn btn--primary">Nachricht senden {{icon:arrow}}</button>
+            </div>
+            <p class="form__hint">Ihre Angaben werden vertraulich behandelt.</p>
+            <div class="form__status" role="status" aria-live="polite" hidden></div>
+          </form>
+        </div>
+
+        <aside class="card contact-card" aria-labelledby="direkt">
+          <h2 id="direkt" style="font-size:var(--fs-h3);margin:0">Direkter Kontakt</h2>
+          <address>
+            <ul class="contact-list">
+              <li>
+                <span class="contact-list__icon">{{icon:phone}}</span>
+                <span><small>Telefon</small><a href="tel:+41787317678">078 731 76 78</a></span>
+              </li>
+              <li>
+                <span class="contact-list__icon">{{icon:mail}}</span>
+                <span><small>E-Mail</small><a href="mailto:praxis-vogel@gmx.ch">praxis-vogel@gmx.ch</a></span>
+              </li>
+              <li>
+                <span class="contact-list__icon">{{icon:pin}}</span>
+                <span><small>Adresse</small>Praxis Vogel GmbH<br>Kastelweg 6<br>2544 Bettlach SO</span>
+              </li>
+            </ul>
+          </address>
+          <p style="margin-top:1rem"><a class="text-link" href="https://www.google.com/maps/search/?api=1&amp;query=Kastelweg+6%2C+2544+Bettlach" target="_blank" rel="noopener">Route planen <span class="visually-hidden">(öffnet Google Maps)</span>{{icon:external}}</a></p>
+        </aside>
+      </div>
+    </section>
+
+    <script type="application/ld+json">
+    { "@context": "https://schema.org", "@type": "ContactPage", "about": { "@id": "https://praxis-vogel.net/#praxis" } }
+    </script>
