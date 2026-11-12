@@ -19,6 +19,7 @@ Kopfzeilen einer Seite (bis zur ersten Leerzeile):
   robots:      z. B. "noindex, follow" (Standard: index, follow)
   priority:    Sitemap-Priorität (Standard 0.7)
   preload:     Bildname, der als LCP-Bild vorgeladen wird (optional)
+  contact_end: "no" blendet den Kontakt-Abschluss (_src/partials/contact-end.html) aus
 
 Platzhalter im Inhalt:
   {{icon:name}}
@@ -46,6 +47,7 @@ NAV = [
 IMAGES = {
     "luca-vogel-beratung": {"widths": [480, 720, 960, 1280], "fallback": 720, "ratio": (4, 5)},
     "luca-vogel-gespraech": {"widths": [720, 1200], "fallback": 1200, "ratio": (40, 21)},
+    "luca-vogel-portrait": {"widths": [480, 720, 960], "fallback": 720, "ratio": (4, 5)},
 }
 
 _S = 'viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"'
@@ -128,12 +130,13 @@ def preload_tag(base):
     srcset = ", ".join(f"/assets/img/{base}-{w}.webp {w}w" for w in img["widths"])
     return (
         f'<link rel="preload" as="image" type="image/webp" imagesrcset="{srcset}" '
-        f'imagesizes="(min-width: 900px) 460px, (min-width: 600px) 420px, calc(100vw - 2rem)" fetchpriority="high">'
+        f'imagesizes="(min-width: 900px) 50vw, 100vw" fetchpriority="high">'
     )
 
 
 def build():
     layout = (SRC / "layout.html").read_text(encoding="utf-8")
+    contact_end = (SRC / "partials" / "contact-end.html").read_text(encoding="utf-8").rstrip()
     sitemap = []
     today = date.today().isoformat()
 
@@ -160,6 +163,7 @@ def build():
             .replace("{{body_class}}", f"page-{slug}")
             .replace("{{nav}}", nav)
             .replace("{{content}}", body.rstrip())
+            .replace("{{contact_end}}", "" if meta.get("contact_end") == "no" else contact_end)
         )
         html = render_placeholders(html)
 

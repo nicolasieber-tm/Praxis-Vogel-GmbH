@@ -4,28 +4,39 @@ nav: ueber-uns
 crumb: Über uns
 priority: 0.8
 
-    <section class="page-hero">
+    <section class="page-head">
       <div class="container">
         <nav class="breadcrumb" aria-label="Brotkrümelnavigation"><ol><li><a href="/">Startseite</a></li><li aria-current="page">Über uns</li></ol></nav>
-        <p class="eyebrow">Über uns</p>
-        <h1>Unser Team</h1>
-        <p class="lead">Als Vater und Sohn begleiten wir Jugendliche und ihre Familien – empathisch, professionell und lösungsorientiert.</p>
+        <h1>Vater und Sohn, ein Team</h1>
+        <p class="lead">Wir begleiten Jugendliche und ihre Familien: empathisch, professionell und lösungsorientiert.</p>
       </div>
     </section>
 
     <!-- ========== Luca Vogel ========== -->
     <section class="section section--surface" id="luca-vogel" aria-labelledby="luca">
-      <div class="container split">
-        <div class="reveal">
-          {{picture:luca-vogel-beratung|Luca Vogel, Sozialarbeiter FH, im Beratungsgespräch|portrait|(min-width: 1100px) 540px, (min-width: 900px) 45vw, calc(100vw - 2.25rem)}}
+      <div class="container cols cols--even">
+        <div>
+          {{picture:luca-vogel-portrait|Porträt von Luca Vogel, Sozialarbeiter FH|portrait|(min-width: 900px) 560px, calc(100vw - 2.5rem)}}
         </div>
-        <div class="reveal">
-          <p class="eyebrow">Gründer und Leitung</p>
-          <h2 id="luca">Luca Vogel, Sozialarbeiter FH</h2>
-          <p>Luca Vogel ist Sozialarbeiter FH und bringt Erfahrung in der ambulanten und stationären Behandlung und Beratung von minderjährigen und erwachsenen Patientinnen und Patienten der Klinik für Psychiatrie, Psychotherapie und Psychosomatik mit.</p>
-          <p>Seine langjährige Erfahrung erlaubt es ihm, auch in herausfordernden Situationen souverän zu bleiben und Klientinnen und Klienten in akuten Lebenskrisen Sicherheit zu geben.</p>
-          <h3 style="margin-top:2rem">Weiterbildungen</h3>
-          <ul class="tags">
+        <div>
+          <h2 id="luca">Luca Vogel</h2>
+          <p class="person__role">Gründer und Leitung, Sozialarbeiter FH</p>
+          <div class="prose">
+            <p>Luca Vogel bringt Erfahrung in der ambulanten und stationären Behandlung und Beratung von minderjährigen und erwachsenen Patientinnen und Patienten der Klinik für Psychiatrie, Psychotherapie und Psychosomatik mit.</p>
+            <p>Seine langjährige Erfahrung erlaubt es ihm, auch in herausfordernden Situationen souverän zu bleiben und Klientinnen und Klienten in akuten Lebenskrisen Sicherheit zu geben.</p>
+          </div>
+
+          <h3 class="sub">Werdegang</h3>
+          <ol class="timeline">
+            <li><span class="timeline__year">Seit 2018</span><span>Gründung und Leitung der Praxis Vogel GmbH in Bettlach</span></li>
+            <li><span class="timeline__year">2015–2017</span><span>Co-Präsident der FKSP (Fachkonferenz Sozialberatung in psychiatrischen Kliniken, deutsche Schweiz)</span></li>
+            <li><span class="timeline__year">2011–2017</span><span>Leitung der Sozialberatung in den Kliniken für Psychiatrie, Psychotherapie und Psychosomatik Solothurn, Olten und Grenchen</span></li>
+            <li><span class="timeline__year">2011–2017</span><span>Mitglied der Fachkommission Menschen mit einer Behinderung im Kanton Solothurn</span></li>
+            <li><span class="timeline__year">2000–2011</span><span>Sozialregionen, Abteilung Sozialhilfe</span></li>
+          </ol>
+
+          <h3 class="sub">Weiterbildungen</h3>
+          <ul class="ruled ruled--compact">
             <li>Behandlung und Beratung psychisch kranker Menschen</li>
             <li>Psychische Auffälligkeiten</li>
             <li>Beratungsmethoden</li>
@@ -34,21 +45,12 @@ priority: 0.8
           </ul>
         </div>
       </div>
+    </section>
 
-      <div class="container split split--text-wide" style="margin-top:3rem">
-        <div class="reveal">
-          <h3>Werdegang</h3>
-          <ol class="timeline">
-            <li><span class="timeline__year">Seit 2018</span>Gründung und Leitung der Praxis Vogel GmbH in Bettlach</li>
-            <li><span class="timeline__year">2015–2017</span>Co-Präsident der FKSP (Fachkonferenz Sozialberatung in psychiatrischen Kliniken, deutsche Schweiz)</li>
-            <li><span class="timeline__year">2011–2017</span>Leitung der Sozialberatung in den Kliniken für Psychiatrie, Psychotherapie und Psychosomatik Solothurn, Olten und Grenchen</li>
-            <li><span class="timeline__year">2011–2017</span>Mitglied der Fachkommission Menschen mit einer Behinderung im Kanton Solothurn</li>
-            <li><span class="timeline__year">2000–2011</span>Sozialregionen, Abteilung Sozialhilfe</li>
-          </ol>
-        </div>
-        <figure class="quote reveal">
-          <span class="quote__mark">{{icon:quote}}</span>
-          <blockquote style="margin:0"><p>Gemeinsam mit meinen Klientinnen und Klienten verfolge ich drei Ziele: Reduktion der Krise, Stabilisierung der Situation und Förderung der Eigenständigkeit.</p></blockquote>
+    <section class="section" aria-label="Zitat">
+      <div class="container">
+        <figure class="statement">
+          <blockquote><p>«Gemeinsam mit meinen Klientinnen und Klienten verfolge ich drei Ziele: Reduktion der Krise, Stabilisierung der Situation und Förderung der Eigenständigkeit.»</p></blockquote>
           <figcaption>Luca Vogel</figcaption>
         </figure>
       </div>
@@ -56,33 +58,21 @@ priority: 0.8
 
     <!-- ========== Dave Vogel ==========
          TODO: Foto, Ausbildung/Abschluss, Werdegang und Schwerpunkte von Dave ergänzen.
-         Sobald ein Foto vorliegt: Avatar durch einen picture-Platzhalter ersetzen (siehe Luca oben) (Bild in assets/img/ ablegen
-         und in build.py unter IMAGES eintragen). -->
-    <section class="section" id="dave-vogel" aria-labelledby="dave">
-      <div class="container split">
-        <div class="reveal">
-          <div class="avatar-placeholder" role="img" aria-label="Dave Vogel"><span>DV</span></div>
+         Sobald ein Foto vorliegt: Monogramm durch einen picture-Platzhalter ersetzen (siehe Luca oben;
+         Bild in assets/img/ ablegen und in build.py unter IMAGES eintragen). -->
+    <section class="section section--surface" id="dave-vogel" aria-labelledby="dave">
+      <div class="container cols cols--even">
+        <div>
+          <div class="monogram" role="img" aria-label="Dave Vogel">DV</div>
         </div>
-        <div class="reveal">
-          <p class="eyebrow">Fachperson Begleitung</p>
+        <div>
           <h2 id="dave">Dave Vogel</h2>
-          <p>Dave Vogel begleitet als Fachperson Jugendliche und ihre Familien in der sozialpädagogischen Familienbegleitung und im individuellen Coaching.</p>
-          <p>Gemeinsam mit Luca Vogel setzt er sich dafür ein, Krisen zu reduzieren, Familien zu stabilisieren und die Eigenständigkeit der Jugendlichen zu fördern.</p>
-          <!-- TODO: Ausbildung / Weiterbildungen von Dave als .tags-Liste ergänzen -->
-        </div>
-      </div>
-    </section>
-
-    <section class="section section--tight">
-      <div class="container">
-        <div class="cta-band reveal">
-          <div>
-            <h2>Gerne hören wir Ihnen zu.</h2>
-            <p>Erfahren Sie mehr über unser <a href="/angebot/" style="color:#fff">Angebot</a> oder nehmen Sie direkt Kontakt auf.</p>
+          <p class="person__role">Fachperson Begleitung</p>
+          <div class="prose">
+            <p>Dave Vogel begleitet Jugendliche und ihre Familien in der sozialpädagogischen Familienbegleitung und im individuellen Coaching.</p>
+            <p>Gemeinsam mit Luca Vogel setzt er sich dafür ein, Krisen zu reduzieren, Familien zu stabilisieren und die Eigenständigkeit der Jugendlichen zu fördern.</p>
           </div>
-          <div class="btn-row">
-            <a href="/kontakt/" class="btn btn--light">Jetzt kontaktieren {{icon:arrow}}</a>
-          </div>
+          <!-- TODO: Ausbildung / Weiterbildungen von Dave als .ruled-Liste ergänzen -->
         </div>
       </div>
     </section>
