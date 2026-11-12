@@ -33,6 +33,23 @@
     window.addEventListener("scroll", onScroll, { passive: true });
   }
 
+  // Google Maps erst nach Klick laden (Zwei-Klick-Lösung)
+  document.querySelectorAll("[data-map]").forEach(function (map) {
+    var btn = map.querySelector("[data-map-load]");
+    if (!btn) return;
+    btn.addEventListener("click", function () {
+      var iframe = document.createElement("iframe");
+      iframe.src = map.getAttribute("data-src");
+      iframe.title = "Karte: Praxis Vogel GmbH, Kastelweg 6, 2544 Bettlach";
+      iframe.loading = "lazy";
+      iframe.referrerPolicy = "no-referrer-when-downgrade";
+      iframe.setAttribute("allowfullscreen", "");
+      map.innerHTML = "";
+      map.appendChild(iframe);
+      iframe.focus();
+    });
+  });
+
   // Jahr im Footer
   document.querySelectorAll("[data-year]").forEach(function (el) { el.textContent = new Date().getFullYear(); });
 

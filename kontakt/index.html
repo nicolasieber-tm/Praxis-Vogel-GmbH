@@ -10,7 +10,7 @@
 
   <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
   
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/style.css?v=bb2cb8d8">
 
   <meta property="og:type" content="website">
   <meta property="og:locale" content="de_CH">
@@ -134,7 +134,7 @@
             <div><dt>E-Mail</dt><dd><a href="mailto:praxis-vogel@gmx.ch">praxis-vogel@gmx.ch</a></dd></div>
             <div><dt>Praxis</dt><dd><address>Praxis Vogel GmbH<br>Kastelweg 6<br>2544 Bettlach SO</address></dd></div>
           </dl>
-          <p style="margin-top:1rem"><a class="link more" href="https://www.google.com/maps/search/?api=1&amp;query=Kastelweg+6%2C+2544+Bettlach" target="_blank" rel="noopener">Route in Google Maps<span class="visually-hidden"> (öffnet in neuem Tab)</span></a></p>
+          <p style="margin-top:1rem"><a class="link more" href="#anfahrt">Anfahrt und Karte</a></p>
         </div>
 
         <div class="form-panel">
@@ -200,6 +200,24 @@
       </div>
     </section>
 
+    <section class="section" aria-labelledby="anfahrt">
+      <div class="container">
+        <div class="cols" style="margin-bottom:2rem">
+          <h2 id="anfahrt">Anfahrt</h2>
+          <p class="lead" style="align-self:end">Die Praxis liegt am Kastelweg 6 in Bettlach, zwischen Grenchen und Solothurn.</p>
+        </div>
+        <!-- Zwei-Klick-Lösung: Google Maps wird erst nach Klick geladen (Datenschutz, Ladezeit) -->
+        <div class="map" data-map data-src="https://www.google.com/maps?q=Praxis+Vogel+GmbH,+Kastelweg+6,+2544+Bettlach&amp;z=15&amp;output=embed">
+          <div class="map__consent">
+            <p class="map__address">Kastelweg 6<br>2544 Bettlach</p>
+            <button type="button" class="btn btn--primary" data-map-load>Karte anzeigen</button>
+            <p class="map__note">Beim Anzeigen der Karte werden Daten an Google übermittelt. Mehr dazu in der <a href="/datenschutz/#google-maps">Datenschutzerklärung</a>.</p>
+            <a class="link" href="https://www.google.com/maps/search/?api=1&amp;query=Kastelweg+6%2C+2544+Bettlach" target="_blank" rel="noopener">Direkt in Google Maps öffnen<span class="visually-hidden"> (öffnet in neuem Tab)</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <script type="application/ld+json">
     { "@context": "https://schema.org", "@type": "ContactPage", "about": { "@id": "https://praxis-vogel.net/#praxis" } }
     </script>
@@ -249,6 +267,6 @@
     <a href="/kontakt/" class="btn btn--primary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3 7l9 6 9-6"/></svg> Anfrage</a>
   </div>
 
-  <script src="/assets/js/main.js" defer></script>
+  <script src="/assets/js/main.js?v=535278a8" defer></script>
 </body>
 </html>

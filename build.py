@@ -27,6 +27,7 @@ Platzhalter im Inhalt:
 """
 from datetime import date
 from pathlib import Path
+import hashlib
 import html as htmllib
 import json
 import re
@@ -68,6 +69,11 @@ ICONS = {
     "users": f'<svg {_S}><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20.5a6.5 6.5 0 0 1 13 0"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8M18.5 14.2a6.5 6.5 0 0 1 3 6.3"/></svg>',
     "external": f'<svg {_S}><path d="M14 4h6v6M20 4l-9 9M18 14v5a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 4 19V7.5A1.5 1.5 0 0 1 5.5 6H10"/></svg>',
 }
+
+
+def asset_version(path: str) -> str:
+    """Kurzer Hash des Dateiinhalts – ändert sich bei jeder Änderung (Cache-Busting)."""
+    return hashlib.md5((ROOT / path.lstrip("/")).read_bytes()).hexdigest()[:8]
 
 
 def url_for(slug: str) -> str:
@@ -136,6 +142,8 @@ def preload_tag(base):
 
 def build():
     layout = (SRC / "layout.html").read_text(encoding="utf-8")
+    for asset in ("/assets/css/style.css", "/assets/js/main.js"):
+        layout = layout.replace(f'"{asset}"', f'"{asset}?v={asset_version(asset)}"')
     contact_end = (SRC / "partials" / "contact-end.html").read_text(encoding="utf-8").rstrip()
     sitemap = []
     today = date.today().isoformat()
