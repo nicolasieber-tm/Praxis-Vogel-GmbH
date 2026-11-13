@@ -226,7 +226,7 @@ body.nav-open { overflow: hidden; }
 .hero { padding-top: 2rem; }
 .hero__grid { display: grid; gap: 2.5rem; }
 .hero__text { display: grid; gap: 1.5rem; align-content: center; }
-.hero h1 { max-width: 12ch; margin: 0; }
+.hero h1 { max-width: 12ch; margin: 0; padding-bottom: .14em; }
 .hero .lead { margin: 0; max-width: 30em; }
 
 /* Handgezogene Linie unter dem Schlüsselwort: der eine persönliche Moment der Seite */
@@ -274,15 +274,29 @@ body.nav-open { overflow: hidden; }
 @media (min-width: 600px) { .hero { padding-top: 3.5rem; } .hero__img { aspect-ratio: 3 / 2; } }
 @media (min-width: 900px) {
   .hero { padding-top: 0; }
-  .hero__grid { grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: 0 4rem; }
+  /* Hero füllt genau den Bildschirm unter dem Header; Foto + Ortsband laufen über die volle Höhe */
+  .hero__grid { grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: 0 4rem; min-height: calc(100vh - var(--header-h) - 1px); min-height: calc(100svh - var(--header-h) - 1px); }
   .hero__text { padding-block: 4rem 4.5rem; gap: 1.75rem; }
   /* Foto läuft bis an den rechten Bildschirmrand */
   .hero__media { margin: 0 calc((min(100vw - 2 * var(--gutter), var(--container)) - 100vw) / 2) 0 0; }
   /* Foto füllt die Spalte, bestimmt aber nicht deren Höhe: kein Sand-Leerraum, kein überhoher Hero */
-  .hero__media picture { position: relative; min-height: max(460px, min(72vh, 720px)); }
+  .hero__media picture { position: relative; min-height: 320px; }
   .hero__img { position: absolute; inset: 0; width: 100%; height: 100%; aspect-ratio: auto; }
   .hero__stamp { top: 1.5rem; left: 1.5rem; }
   .hero__place { padding-inline: 1.25rem; }
+  /* Niedrige Fenster: Text rückt zusammen, damit der Hero in die Bildschirmhöhe passt */
+  .hero h1 { font-size: min(var(--fs-h1), 9.5svh); }
+}
+@media (min-width: 900px) and (max-height: 820px) {
+  .hero__text { padding-block: 2rem; gap: 1.1rem; }
+  .hero .lead { font-size: min(var(--fs-lead), 2.9svh); }
+  .door { padding-block: .7rem; }
+  .door b { font-size: 1.125rem; }
+}
+@media (min-width: 900px) and (max-height: 640px) {
+  .hero__text { padding-block: 1.25rem; gap: .85rem; }
+  .door span { display: none; }
+  .hero .btn { min-height: 46px; }
 }
 
 /* ---------- Unterseiten-Kopf ---------- */
