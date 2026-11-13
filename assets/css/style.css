@@ -251,7 +251,7 @@ body.nav-open { overflow: hidden; }
   .door + .door { padding-left: 1.25rem; border-left: 1px solid var(--rule); }
 }
 
-.hero__media { position: relative; display: grid; grid-template-rows: 1fr auto; margin-inline: calc(-1 * var(--gutter)); background: var(--sand); }
+.hero__media { position: relative; display: grid; grid-template-rows: 1fr auto; margin-inline: calc(-1 * var(--gutter)); background: var(--sand); container-type: inline-size; }
 .hero__img { width: 100%; aspect-ratio: 4 / 3.6; object-fit: cover; object-position: 30% 25%; }
 .hero__stamp {
   position: absolute; top: 1rem; left: var(--gutter); margin: 0;
@@ -260,24 +260,29 @@ body.nav-open { overflow: hidden; }
   box-shadow: 0 6px 18px -8px rgba(24, 24, 27, .35);
 }
 .hero__stamp b { display: block; font-size: 1.0625rem; letter-spacing: -.015em; color: var(--primary-dark); }
+/* Ortsband: bleibt immer einzeilig. Statt umzubrechen, kürzt es sich mit der Breite der Fotospalte. */
 .hero__place {
-  display: flex; flex-wrap: wrap; justify-content: space-between; gap: .3rem 1.5rem; margin: 0;
-  padding: .9rem var(--gutter); background: var(--sand); color: var(--ink); font-size: .875rem;
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: .3rem 1.25rem; margin: 0;
+  padding: .9rem var(--gutter); background: var(--sand); color: var(--ink); font-size: .8125rem; line-height: 1.4;
 }
+.hero__place > * { white-space: nowrap; }
 .hero__place b { font-weight: 600; }
+@container (max-width: 38rem) { .place__region { display: none; } }
+@container (max-width: 25rem) { .place__member { display: none; } }
+@container (max-width: 20rem) { .place__spf { display: none; } }
 
-@media (min-width: 600px) { .hero { padding-top: 3.5rem; } }
+@media (min-width: 600px) { .hero { padding-top: 3.5rem; } .hero__img { aspect-ratio: 3 / 2; } }
 @media (min-width: 900px) {
   .hero { padding-top: 0; }
   .hero__grid { grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: 0 4rem; }
   .hero__text { padding-block: 4rem 4.5rem; gap: 1.75rem; }
   /* Foto läuft bis an den rechten Bildschirmrand */
   .hero__media { margin: 0 calc((min(100vw - 2 * var(--gutter), var(--container)) - 100vw) / 2) 0 0; }
-  .hero__media picture { min-height: 0; }
-  .hero__media picture, .hero__img { height: 100%; }
-  .hero__img { aspect-ratio: auto; min-height: 520px; max-height: calc(100vh - var(--header-h) - 3rem); }
+  /* Foto füllt die Spalte, bestimmt aber nicht deren Höhe: kein Sand-Leerraum, kein überhoher Hero */
+  .hero__media picture { position: relative; min-height: max(460px, min(72vh, 720px)); }
+  .hero__img { position: absolute; inset: 0; width: 100%; height: 100%; aspect-ratio: auto; }
   .hero__stamp { top: 1.5rem; left: 1.5rem; }
-  .hero__place { padding-inline: 1.25rem; gap: .3rem 1.25rem; font-size: .8125rem; }
+  .hero__place { padding-inline: 1.25rem; }
 }
 
 /* ---------- Unterseiten-Kopf ---------- */
