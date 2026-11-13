@@ -1,4 +1,4 @@
-/* Praxis Vogel GmbH – kleine Helfer (Navigation, Header, Reveal, Kontaktformular) */
+/* Praxis Vogel GmbH – kleine Helfer (Navigation, Header, Karte, Kontaktformular) */
 (function () {
 
   // Mobile Navigation
@@ -10,6 +10,10 @@
       toggle.querySelector(".visually-hidden").textContent = open ? "Menü schliessen" : "Menü öffnen";
       nav.classList.toggle("is-open", open);
       document.body.classList.toggle("nav-open", open);
+      // Inhalt hinter dem offenen Menü für Tastatur und Screenreader sperren
+      document.querySelectorAll("main, .site-footer, .mobile-cta").forEach(function (el) {
+        if (open) el.setAttribute("inert", ""); else el.removeAttribute("inert");
+      });
     };
     toggle.addEventListener("click", function () {
       setOpen(toggle.getAttribute("aria-expanded") !== "true");
