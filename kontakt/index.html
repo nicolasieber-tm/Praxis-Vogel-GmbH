@@ -137,14 +137,10 @@
           <p class="follow"><a class="link more" href="#anfahrt">Anfahrt und Karte</a></p>
         </div>
 
-        <div class="form-panel">
+        <div class="form-panel" id="anfrage">
           <h2>Anfrage schreiben</h2>
-          <!--
-            Formular-Versand: Trage bei data-endpoint die URL eines Formular-Dienstes ein
-            (z. B. https://formspree.io/f/XXXX oder ein eigenes PHP-Skript).
-            Ohne Endpoint öffnet sich das E-Mail-Programm mit vorausgefüllter Nachricht.
-          -->
-          <form class="form" data-contact-form data-endpoint="" data-mailto="praxis-vogel@gmx.ch" novalidate>
+          <!-- Versand über POST /anfrage (server.py, E-Mail via Resend), danach Weiterleitung auf /danke/. Empfänger: Railway-Variable KONTAKT_EMPFAENGER. -->
+          <form class="form" action="/anfrage" method="post" data-contact-form data-endpoint="/anfrage" data-mailto="praxis-vogel@gmx.ch" novalidate>
             <div class="form__row">
               <div class="field">
                 <label for="name">Name</label>
@@ -267,6 +263,6 @@
     <a href="/kontakt/" class="btn btn--primary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3 7l9 6 9-6"/></svg> Anfragen</a>
   </div>
 
-  <script src="/assets/js/main.js?v=33b8d867" defer></script>
+  <script src="/assets/js/main.js?v=4d175725" defer></script>
 </body>
 </html>

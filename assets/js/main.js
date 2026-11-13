@@ -58,7 +58,7 @@
   document.querySelectorAll("[data-year]").forEach(function (el) { el.textContent = new Date().getFullYear(); });
 
   // Kontaktformular
-  // Ist data-endpoint gesetzt (z. B. Formspree / Web3Forms / eigenes PHP), wird per fetch gesendet.
+  // Ist data-endpoint gesetzt (POST /anfrage in server.py), wird per fetch gesendet und danach auf /danke/ weitergeleitet.
   // Ohne Endpoint öffnet sich das E-Mail-Programm mit vorausgefüllter Nachricht (Fallback).
   var form = document.querySelector("[data-contact-form]");
   if (form) {
@@ -68,6 +68,11 @@
       status.className = "form__status " + (ok ? "form__status--ok" : "form__status--err");
       status.hidden = false;
     };
+    var fail = function () {
+      show("Leider konnte Ihre Nachricht nicht gesendet werden. Bitte rufen Sie uns an (078 731 76 78) oder schreiben Sie an " + form.getAttribute("data-mailto") + ".", false);
+    };
+    // Rückkehr vom Server ohne JavaScript-Versand (server.py leitet mit ?fehler=1 zurück)
+    if (/[?&]fehler=/.test(location.search)) fail();
 
     form.addEventListener("submit", function (e) {
       e.preventDefault();
@@ -95,16 +100,15 @@
       }
 
       btn.disabled = true;
+      btn.setAttribute("aria-busy", "true");
       fetch(endpoint, { method: "POST", body: data, headers: { Accept: "application/json" } })
-        .then(function (r) {
-          if (!r.ok) throw new Error();
-          form.reset();
-          show("Vielen Dank für Ihre Nachricht. Wir melden uns so schnell wie möglich bei Ihnen.", true);
-        })
+        .then(function (r) { return r.json().then(function (j) { if (!r.ok || !j.ok) throw new Error(); }); })
+        .then(function () { window.location.href = "/danke/"; })
         .catch(function () {
-          show("Leider ist etwas schiefgelaufen. Bitte rufen Sie uns an: 078 731 76 78.", false);
-        })
-        .finally(function () { btn.disabled = false; });
+          fail();
+          btn.disabled = false;
+          btn.removeAttribute("aria-busy");
+        });
     });
   }
 })();

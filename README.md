@@ -10,15 +10,24 @@ Mobile First, SEO-optimiert (Lighthouse Mobile: 99–100 in Performance, SEO, Ba
 - `build.py` – erzeugt die Seiten mit sauberen URLs (`/angebot/index.html`), `sitemap.xml`, `robots.txt`
 - `assets/css/style.css` – Design-System, Mobile First (Farb-Tokens oben in `:root`)
 - `assets/js/main.js` – Mobile-Menü, Einblend-Animation, Kontaktformular
-- `.htaccess` – HTTPS, 301-Weiterleitungen der alten URLs, Caching, Komprimierung (Apache)
+- `server.py` – Webserver für Railway: liefert die Seiten aus (Caching, gzip, Sicherheits-Header, 301 der alten URLs) und versendet das Kontaktformular (`POST /anfrage`) über Resend
+- `Dockerfile` – Railway baut damit den Container (`python server.py`)
 
 **Inhalte immer in `_src/` ändern und danach `python3 build.py` ausführen.** Die generierten Dateien werden überschrieben.
 
 ## Lokal ansehen
 ```
-python3 -m http.server 8000
+python3 server.py
 ```
 → http://localhost:8000 (die Seite nutzt Root-Pfade wie `/assets/…`, daher über einen Server öffnen, nicht per Doppelklick)
+
+## Hosting & Kontaktformular (Railway)
+Railway baut bei jedem Push auf `main` automatisch neu (Dockerfile). Variablen im Railway-Service:
+- `RESEND_API_KEY` – API-Schlüssel von resend.com (Pflicht für den Versand)
+- `KONTAKT_EMPFAENGER` – Empfänger der Anfragen, mehrere mit Komma (Standard `praxis-vogel@gmx.ch`)
+- `KONTAKT_ABSENDER` – z. B. `Webseite Praxis Vogel <webseite@praxis-vogel.net>`; die Domain muss bei Resend bestätigt sein
+
+Nach dem Absenden landet man auf `/danke/`. Fehler beim Versand stehen in den Railway-Logs (`railway logs`).
 
 ## SEO-Massnahmen
 - Saubere URLs, identisch zur alten Seite (`/angebot/`, `/kontakt/` …); `/über-mich` → 301 auf `/ueber-mich/`

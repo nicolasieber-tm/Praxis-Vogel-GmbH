@@ -1,0 +1,11 @@
+.git
+.gitignore
+.claude
+.impeccable
+_src
+build.py
+README.md
+Dockerfile
+.dockerignore
+**/.DS_Store
+**/Icon*

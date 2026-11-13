@@ -24,14 +24,10 @@ contact_end: no
           <p class="follow"><a class="link more" href="#anfahrt">Anfahrt und Karte</a></p>
         </div>
 
-        <div class="form-panel">
+        <div class="form-panel" id="anfrage">
           <h2>Anfrage schreiben</h2>
-          <!--
-            Formular-Versand: Trage bei data-endpoint die URL eines Formular-Dienstes ein
-            (z. B. https://formspree.io/f/XXXX oder ein eigenes PHP-Skript).
-            Ohne Endpoint öffnet sich das E-Mail-Programm mit vorausgefüllter Nachricht.
-          -->
-          <form class="form" data-contact-form data-endpoint="" data-mailto="praxis-vogel@gmx.ch" novalidate>
+          <!-- Versand über POST /anfrage (server.py, E-Mail via Resend), danach Weiterleitung auf /danke/. Empfänger: Railway-Variable KONTAKT_EMPFAENGER. -->
+          <form class="form" action="/anfrage" method="post" data-contact-form data-endpoint="/anfrage" data-mailto="praxis-vogel@gmx.ch" novalidate>
             <div class="form__row">
               <div class="field">
                 <label for="name">Name</label>
